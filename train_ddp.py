@@ -5,7 +5,7 @@ Modified for educational purposes.
 Nikolas, AI Summer
 """
 import os 
-gpu_list = "0,1,2,3"
+gpu_list = "0,1,2,3,4,5,6,7"
 os.environ['CUDA_VISIBLE_DEVICES'] = gpu_list
 
 import torch
@@ -29,7 +29,9 @@ def create_data_loader_cifar10():
         transforms.ToTensor(),
         transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
 
-    batch_size = 256
+#    batch_size = 256
+    batch_size = 10240
+    print(f"batch_size: {batch_size})
 
     trainset = torchvision.datasets.CIFAR10(root='./data', train=True,
                                             download=True, transform=transform)                                  
