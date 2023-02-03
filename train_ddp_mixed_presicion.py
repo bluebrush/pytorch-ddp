@@ -5,7 +5,7 @@ Modified for educational purposes.
 Nikolas, AI Summer
 """
 import os 
-gpu_list = "0,1,2,3"
+gpu_list = "0,1,2,3,4,5,6,7"
 os.environ['CUDA_VISIBLE_DEVICES'] = gpu_list
 
 import torch

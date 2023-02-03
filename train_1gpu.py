@@ -22,6 +22,7 @@ def create_data_loader_cifar10():
         transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
 
     batch_size = 256
+    print(F"batch_size: {batch_size}")
 
     trainset = torchvision.datasets.CIFAR10(root='./data', train=True,
                                             download=True, transform=transform)
@@ -39,7 +40,7 @@ def train(net, trainloader):
     print("Start training...")
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
-    epochs = 1
+    epochs = 10
     num_of_batches = len(trainloader)
     for epoch in range(epochs):  # loop over the dataset multiple times
 

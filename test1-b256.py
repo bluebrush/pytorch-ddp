@@ -50,7 +50,7 @@ def train(net, trainloader):
     print("Start training...")
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
-    epochs = 10
+    epochs = 5
     num_of_batches = len(trainloader)
     for epoch in range(epochs):  # loop over the dataset multiple times
         trainloader.sampler.set_epoch(epoch)
