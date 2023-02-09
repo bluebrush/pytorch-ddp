@@ -34,20 +34,23 @@ def create_data_loader_cifar10():
     print(f"batch_size: {batch_size}")
     trainset = torchvision.datasets.ImageFolder(root='./dataset2/train',
                                            transform=transform)
+    train_sampler = torch.utils.data.distributed.DistributedSampler(dataset=trainset, shuffle=True)
     trainloader = torch.utils.data.DataLoader(
                                             trainset,
                                             num_workers=16,
-                                            shuffle=True,
+                                            sampler=train_sampler,
                                             pin_memory=True,
                                             batch_size=batch_size,
                                             )
 
     testset = torchvision.datasets.ImageFolder(root='./dataset2/val',
                                            transform=transform)
+    test_sampler = torch.utils.data.distributed.DistributedSampler(dataset=testset, shuffle=True)
     testloader = torch.utils.data.DataLoader(
                                             testset,
                                             num_workers=16,
                                             shuffle=False,
+                                            sampler=test_sampler,
                                             batch_size=batch_size
                                             )
     return trainloader, testloader
